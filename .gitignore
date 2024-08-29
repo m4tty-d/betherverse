@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# sst
+.sst/
+
+# contracts
+packages/contracts/cache
+packages/contracts/out
