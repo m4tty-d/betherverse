@@ -21,4 +21,16 @@ contract BettingPlatform {
         events[eventCount] = new Event(msg.sender, _question, _options, _deadline, platformFee);
         return eventCount;
     }
+
+    function getLatestEvents(uint256 _startIndex, uint256 _endIndex) public view returns (Event[] memory) {
+        require(_startIndex > 0 && _startIndex <= eventCount, "Invalid start index");
+        require(_endIndex >= _startIndex && _endIndex <= eventCount, "Invalid end index");
+
+        uint256 length = _endIndex - _startIndex + 1;
+        Event[] memory result = new Event[](length);
+        for (uint256 i = 0; i < length; i++) {
+            result[i] = events[eventCount - (_startIndex + i) + 1];
+        }
+        return result;
+    }
 }

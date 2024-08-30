@@ -2,6 +2,17 @@
 pragma solidity ^0.8.13;
 
 contract Event {
+    struct EventDetails {
+        address creator;
+        string question;
+        string[] options;
+        uint256 deadline;
+        uint256 platformFee;
+        uint256 totalBets;
+        bool outcomePublished;
+        uint256 winningOption;
+    }
+
     address public creator;
     string public question;
     string[] public options;
@@ -27,6 +38,11 @@ contract Event {
         options = _options;
         deadline = _deadline;
         platformFee = _platformFee;
+    }
+
+    function getEventDetails() public view returns (EventDetails memory) {
+        return
+            EventDetails(creator, question, options, deadline, platformFee, totalBets, outcomePublished, winningOption);
     }
 
     function placeBet(uint256 _option) public payable {

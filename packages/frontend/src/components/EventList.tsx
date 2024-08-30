@@ -1,11 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import {
-  useReadBettingPlatform,
+  eventAbi,
   useReadBettingPlatformEventCount,
-  useReadBettingPlatformEvents,
-  useReadEventQuestion,
+  useReadBettingPlatformGetLatestEvents,
 } from "@/wagmi.gen";
-import { useEffect } from "react";
+import { useReadContracts } from "wagmi";
+import BetCard from "./BetCard";
+
+const EVENTS_TO_SHOW = 12;
 
 export function EventList() {
   const { data: eventCount, isLoading: isEventCountLoading } =
@@ -13,44 +14,43 @@ export function EventList() {
       address: import.meta.env.VITE_CONTRACT_ADDRESS as `0x${string}`,
     });
 
-  const { data: event, isLoading: isEventsLoading } =
-    useReadBettingPlatformEvents({
-      args: [BigInt(eventCount ?? 0)],
+  const startIndex = eventCount
+    ? Math.max(1, Number(eventCount) - EVENTS_TO_SHOW + 1)
+    : 1;
+  const endIndex = eventCount ? Number(eventCount) : 0;
+
+  const { data: eventAddresses } = useReadBettingPlatformGetLatestEvents({
+    address: import.meta.env.VITE_CONTRACT_ADDRESS as `0x${string}`,
+    args: [BigInt(startIndex), BigInt(endIndex)],
+  });
+
+  const eventDetailsConfig =
+    eventAddresses?.map((address) => ({
+      address,
+      abi: eventAbi,
+      functionName: "getEventDetails",
+    })) ?? [];
+
+  const { data: allEventDetails, isLoading: isEventDetailsLoading } =
+    useReadContracts({
+      contracts: eventDetailsConfig,
     });
+  console.log("allEventDetails", allEventDetails);
 
-  // const { data: question } = useReadEventQuestion({
-  //   address: event,
-  // });
-
-  if (isEventCountLoading || isEventsLoading) {
+  if (isEventCountLoading || isEventDetailsLoading) {
     return <div>Loading events...</div>;
   }
 
   return (
-    <>
-      <div>{eventCount?.toString()}</div>
-      <div>{event?.toString()}</div>
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold">Betting Events</h2>
-        {/* {events && events.length > 0 ? (
-          events.map((event, index) => (
-            <Card key={event.id}>
-              <CardHeader>
-                <CardTitle>{event.question}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Deadline:{" "}
-                  {new Date(Number(event.deadline) * 1000).toLocaleString()}
-                </p>
-                <p>Options: {event.options.join(", ")}</p>
-              </CardContent>
-            </Card>
-          ))
-        ) : (
-          <p>No events found.</p>
-        )} */}
-      </div>
-    </>
+    <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+      {allEventDetails?.map((eventDetails) => (
+        <BetCard
+          key={eventDetails.result?.question}
+          title={eventDetails.result?.question!}
+          totalBets={eventDetails.result?.totalBets}
+          options={eventDetails.result?.options}
+        />
+      ))}
+    </div>
   );
 }
