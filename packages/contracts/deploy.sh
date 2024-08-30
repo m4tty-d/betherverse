@@ -6,7 +6,7 @@ source "$(dirname "$0")/../../.env"
 set +a
 
 # Run the Forge script
-forge script script/Counter.s.sol:CounterScript --rpc-url $RPC_URL --broadcast
+forge script script/BettingPlatform.s.sol:BettingPlatformScript --rpc-url $RPC_URL --broadcast
 
 # Read the deployed address from the file
 DEPLOYED_ADDRESS=$(cat deployed_address.txt)
