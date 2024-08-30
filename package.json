@@ -11,7 +11,7 @@
 		"frontend:dev": "pnpm --filter=@betherverse/frontend dev",
 		"contracts:build": "pnpm --filter=@betherverse/contracts build",
 		"contracts:test": "pnpm --filter=@betherverse/contracts test",
-		"contracts:deploy": "pnpm --filter=@betherverse/contracts deploy"
+		"contracts:deploy": "pnpm --filter=@betherverse/contracts run deploy"
 	},
 	"dependencies": {
 		"sst": "3.0.75"

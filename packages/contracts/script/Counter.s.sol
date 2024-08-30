@@ -10,9 +10,15 @@ contract CounterScript is Script {
     function setUp() public {}
 
     function run() public {
-        vm.startBroadcast();
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
 
         counter = new Counter();
+        console.log("Counter deployed to:", address(counter));
+
+        // Write address to a file
+        string memory addressString = vm.toString(address(counter));
+        vm.writeFile("./deployed_address.txt", addressString);
 
         vm.stopBroadcast();
     }

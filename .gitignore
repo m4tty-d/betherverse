@@ -5,7 +5,3 @@ dist
 
 # sst
 .sst/
-
-# contracts
-packages/contracts/cache
-packages/contracts/out

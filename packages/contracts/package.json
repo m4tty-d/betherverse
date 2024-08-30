@@ -5,6 +5,6 @@
   "scripts": {
     "build": "forge build",
     "test": "forge test",
-    "deploy": "forge script script/Deploy.s.sol:Deploy --rpc-url $RPC_URL --broadcast --verify -vvvv"
+    "deploy": "./deploy.sh"
   }
 }

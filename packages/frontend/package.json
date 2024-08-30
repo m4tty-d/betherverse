@@ -4,10 +4,12 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
+		"predev": "pnpm wagmi:generate",
 		"dev": "vite",
-		"build": "tsc -b && vite build",
+		"build": "tsc -b && pnpm wagmi:generate && vite build",
 		"preview": "vite preview",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"wagmi:generate": "wagmi generate"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.0",
@@ -37,6 +39,7 @@
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.1",
+		"@wagmi/cli": "^2.1.15",
 		"autoprefixer": "^10.4.20",
 		"globals": "^15.9.0",
 		"postcss": "^8.4.41",

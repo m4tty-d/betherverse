@@ -1,3 +1,4 @@
+import { Counter } from "@/components/Counter";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/")({
@@ -7,7 +8,11 @@ export const Route = createLazyFileRoute("/")({
 function Index() {
 	return (
 		<div>
-			<div>dashboard</div>
+			<div className="mb-4">
+				<div>Contract Address:</div>
+				<div>{import.meta.env.VITE_CONTRACT_ADDRESS}</div>
+			</div>
+			<Counter />
 		</div>
 	);
 }

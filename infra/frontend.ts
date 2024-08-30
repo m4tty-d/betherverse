@@ -6,5 +6,6 @@ export const frontend = new sst.aws.StaticSite("frontend", {
 	},
 	environment: {
 		VITE_WALLETCONNECT_PROJECT_ID: process.env.WALLETCONNECT_PROJECT_ID,
+		VITE_CONTRACT_ADDRESS: process.env.CONTRACT_ADDRESS,
 	},
 });

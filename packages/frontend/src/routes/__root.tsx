@@ -1,4 +1,4 @@
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/Logo";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { ConnectKitButton } from "connectkit";

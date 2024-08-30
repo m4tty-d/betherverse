@@ -1,4 +1,4 @@
-import { CurrencyEth } from "@/components/ui/icons";
+import { CurrencyEth } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export function Logo({

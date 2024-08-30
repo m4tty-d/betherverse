@@ -1,6 +1,6 @@
 import "./index.css";
 import { RouterProvider } from "@tanstack/react-router";
-import { Web3Provider } from "./components/web3-provider";
+import { Web3Provider } from "./components/Web3Provider";
 import { router } from "./services/router";
 
 export const App = () => {
