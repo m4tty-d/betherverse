@@ -1,0 +1,51 @@
+{
+  "name": "@betherverse/frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "pnpm wagmi:generate",
+    "dev": "vite",
+    "build": "tsc -b && pnpm wagmi:generate && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "wagmi:generate": "wagmi generate"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@phosphor-icons/react": "^2.1.7",
+    "@radix-ui/react-collapsible": "^1.1.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-query": "^5.52.2",
+    "@tanstack/react-router": "^1.51.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "connectkit": "^1.8.2",
+    "lucide-react": "^0.436.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
+    "viem": "2.x",
+    "wagmi": "^2.12.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tanstack/router-devtools": "^1.51.5",
+    "@tanstack/router-plugin": "^1.51.0",
+    "@types/node": "^22.5.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@wagmi/cli": "^2.1.15",
+    "autoprefixer": "^10.4.20",
+    "globals": "^15.9.0",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vite-plugin-biome": "^1.0.12"
+  }
+}

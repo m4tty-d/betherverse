@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "JuanBlanco.solidity",
+    "folke.vscode-monorepo-workspace"
+  ]
+}
