@@ -6,21 +6,21 @@ import { WagmiProvider, createConfig } from "wagmi";
 import { foundry, localhost } from "wagmi/chains";
 
 const config = createConfig(
-	getDefaultConfig({
-		appName: "betherverse",
-		walletConnectProjectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID,
-		chains: [localhost, foundry],
-	}),
+  getDefaultConfig({
+    appName: "betherverse",
+    walletConnectProjectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID,
+    chains: [localhost, foundry],
+  }),
 );
 
 const queryClient = new QueryClient();
 
 export const Web3Provider = ({ children }: { children: React.ReactNode }) => {
-	return (
-		<WagmiProvider config={config}>
-			<QueryClientProvider client={queryClient}>
-				<ConnectKitProvider debugMode>{children}</ConnectKitProvider>
-			</QueryClientProvider>
-		</WagmiProvider>
-	);
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <ConnectKitProvider debugMode>{children}</ConnectKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
 };

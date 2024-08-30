@@ -1,24 +1,24 @@
 {
-	"name": "betherverse",
-	"version": "0.0.0",
-	"sideEffects": false,
-	"scripts": {
-		"dev": "sst dev",
-		"sso": "aws sso login --profile=m4tty-sandbox",
-		"typecheck": "pnpm --filter=* typecheck",
-		"lint": "biome lint --write .",
-		"format": "biome format --write .",
-		"frontend:dev": "pnpm --filter=@betherverse/frontend dev",
-		"contracts:build": "pnpm --filter=@betherverse/contracts build",
-		"contracts:test": "pnpm --filter=@betherverse/contracts test",
-		"contracts:deploy": "pnpm --filter=@betherverse/contracts run deploy"
-	},
-	"dependencies": {
-		"sst": "3.0.75"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.8.3",
-		"@types/aws-lambda": "8.10.145",
-		"typescript": "5.5.4"
-	}
+  "name": "betherverse",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "scripts": {
+    "dev": "sst dev",
+    "sso": "aws sso login --profile=m4tty-sandbox",
+    "typecheck": "pnpm --filter=* typecheck",
+    "lint": "biome lint --write .",
+    "format": "biome format --write .",
+    "frontend:dev": "pnpm --filter=@betherverse/frontend dev",
+    "contracts:build": "pnpm --filter=@betherverse/contracts build",
+    "contracts:test": "pnpm --filter=@betherverse/contracts test",
+    "contracts:deploy": "pnpm --filter=@betherverse/contracts run deploy"
+  },
+  "dependencies": {
+    "sst": "3.0.75"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@types/aws-lambda": "8.10.145",
+    "typescript": "5.5.4"
+  }
 }
