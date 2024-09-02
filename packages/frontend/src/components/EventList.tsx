@@ -43,12 +43,13 @@ export function EventList() {
 
   return (
     <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
-      {allEventDetails?.map((eventDetails) => (
+      {allEventDetails?.map((eventDetails, index) => (
         <BetCard
           key={eventDetails.result?.question}
           title={eventDetails.result?.question!}
           totalBets={eventDetails.result?.totalBets}
           options={eventDetails.result?.options}
+          eventAddress={eventAddresses?.[index] as `0x${string}`}
         />
       ))}
     </div>
