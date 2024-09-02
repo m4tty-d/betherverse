@@ -1,4 +1,5 @@
-import { Counter } from "@/components/Counter";
+import { EventList } from "@/components/EventList";
+import { CreateEventModal } from "@/components/modals/CreateEventModal";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/")({
@@ -6,13 +7,15 @@ export const Route = createLazyFileRoute("/")({
 });
 
 function Index() {
+  console.log("env", import.meta.env);
+
   return (
-    <div>
-      <div className="mb-4">
-        <div>Contract Address:</div>
-        <div>{import.meta.env.VITE_CONTRACT_ADDRESS}</div>
+    <div className="container">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Latest Betting Events</h2>
+        <CreateEventModal />
       </div>
-      <Counter />
+      <EventList />
     </div>
   );
 }
